@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>برنامه پزشکان کلینیک تخصصی و فوق تخصصی الزهرا(س)</title>
+
+  <link rel="stylesheet" href="../static/dist/slider/normalize.min.css">
+  <link rel='stylesheet' href='../static/dist/slider/animate.min.css'>
+  <link rel="stylesheet" href="../static/dist/slider/style.css">
+  <link rel="stylesheet" href="../static/dist/table/style.css">
+</head>
+
+<body>
+
+  <h1 style="font-size: 20px;position: absolute;color: white;z-index: 100;right: 3%;text-align: right;">
+    <a style="text-decoration: none;color: springgreen;" href="{{ url_for('index') }}" target="_blank">برنامه پزشکان</a>
+    کلینیک تخصصی و فوق تخصصی الزهرا(س)
+    </a>
+  </h1>
+
+<img src="../static/uploads/logo.png" style="opacity: .8;position: absolute;align-items: center;left: 25%;">
+
+  <h2 style="font-size: 22px;position: absolute;color: white;z-index: 100;left: 3%;text-align: left;">
+    <a id="time" style="text-decoration: none;color: springgreen;" href="{{ url_for('dashboard') }}" target="_blank"></a>
+    </a>
+  </h2>
+
+  <div class="Modern-Slider">
+
+    <!-- Item -->
+    <div class="item">
+      <div class="img-fill">
+
+        <h2 style="margin-top: 3%;font-size: 150%;color: #fff;">
+          برنامه متخصصین روز <b style="font-weight: unset;color: darkorange;">{{ weekday }}</b> نوبت <b
+            style="font-weight: unset;color: springgreen;">{{
+            shift1 }}</b><p id="date_time1" style="direction: rtl;display: inline;font-size: 20px;"></p>
+        </h2>
+
+        <div class="table-responsive">
+          <table style="font-size: 25px;color: #ffffff;font-style: italic;">
+            <thead>
+              <tr class="odd">                                      
+                <th style="text-align: center;background-color: #0085a68a;">نام پزشک</th>
+                <th style="text-align: center;background-color: #0085a68a;width: 25%;">تخصص</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for index, row in schedule1.iterrows() %}
+              <tr>
+
+                <td class="text-center">
+                  {% for n in row['doctor_name'] %}
+                  |
+                  <b>
+                    {{ n }}
+                  </b>
+                  {% endfor %}                  
+                  |
+                </td>
+
+                <td class="text-center">
+                  <a>
+                    {{ row['doctor_specialization'] }}
+                  </a>
+                </td>
+
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <!-- // Item -->
+
+    <!-- Item -->
+    <div class="item">
+      <div class="img-fill">
+
+        <h2 style="margin-top: 3%;font-size: 150%;color: #fff;">
+          برنامه متخصصین روز <b style="font-weight: unset;color: darkorange;">{{ weekday }}</b> نوبت <b
+            style="font-weight: unset;color: springgreen;">{{
+            shift2 }}</b><p id="date_time2" style="direction: rtl;display: inline;font-size: 20px;"></p>
+        </h2>
+
+        <div class="table-responsive">
+ <table style="font-size: 25px;color: #ffffff;font-style: italic;">
+            <thead>
+              <tr class="odd">                
+                <th style="text-align: center;background-color: #0085a68a;">نام پزشک</th>
+                <th style="text-align: center;background-color: #0085a68a;width: 25%;">تخصص</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for index, row in schedule2.iterrows() %}
+              <tr>
+
+                <td class="text-center">
+                  {% for n in row['doctor_name'] %}
+                  |
+                  <b>
+                    {{ n }}
+                  </b>
+                  {% endfor %}                  
+                  |
+                </td>
+
+                <td class="text-center">
+                  <a>
+                    {{ row['doctor_specialization'] }}
+                  </a>
+                </td>
+
+              </tr>
+              {% endfor %}
+
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <!-- // Item -->
+
+    {% for index in phrases %}
+    <!-- Item -->
+    <div class="item">
+      <div class="img-fill">
+        <img src="../static/uploads/{{ index.file_address }}" alt="" style="width: 30%;">
+        <div class="info">
+          <div>
+            <h3>{{ index.phrase }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // Item -->
+    {% endfor %}
+
+  </div>
+
+  <script src='../static/dist/slider/jquery.min.js'></script>
+  <script src='../static/dist/slider/slick.js'></script>
+  <script src="../static/dist/table/script.js"></script>
+  <script src="../static/dist/persianDate/persian-date.js"></script>
+
+  <script>
+
+$(document).ready(function(){
+
+  $(".Modern-Slider").slick({
+    autoplay:true,
+    autoplaySpeed:{{ ModernSlider.identifiers }},
+    speed:{{ ModernSlider.name }},
+    slidesToShow:1,
+    slidesToScroll:1,
+    pauseOnHover:false,
+    dots:true,
+    pauseOnDotsHover:true,
+    cssEase:'linear',
+   // fade:true,
+    draggable:false,
+    prevArrow:'<button class="PrevArrow">←</button>',
+    nextArrow:'<button class="NextArrow"> →</button>', 
+  });
+  
+})
+
+    function getDate() {
+        var pDate = new persianDate();
+        var weekday = pDate.toLocale("fa").format("dddd");
+        var month = pDate.toLocale("fa").format("MMMM");
+        var day = pDate.toLocale("fa").format("DD");
+        var year = pDate.toLocale("fa").format("YYYY");
+        var showTime = pDate.toLocale('fa').format() ;        
+        document.getElementById('time').innerHTML = showTime;
+        document.getElementById('date_time1').innerHTML =" "+day+" "+month+" "+" "+year+" ";    
+        document.getElementById('date_time2').innerHTML = " "+day+" "+month+" "+" "+year+" ";    
+        requestAnimationFrame(getDate);
+        }
+    getDate();  
+    </script>
+
+</body>
+
+</html>

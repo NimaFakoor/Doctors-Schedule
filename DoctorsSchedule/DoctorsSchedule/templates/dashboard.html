@@ -1,0 +1,635 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <div class="card collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title" style="margin-left: 50px;">حذف تخصص</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body" style="direction: rtl;text-align: right;">
+              <p>لطفا در مدیریت و حذف تخصص دقت کنید</p>
+
+              <table class="table table-hover text-nowrap table-head-fixed">
+                <thead>
+                  <tr>
+                    <th class="text-center">
+                      نام تخصص
+                    </th>
+                    <th class="text-center">
+                      حذف از برنامه
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% for index in dr_specialization %}
+                  <tr>
+
+                    <td class="text-center">
+                      <p>
+                        {{ index.name }}
+                      </p>
+                    </td>
+
+                    <td class="text-center">
+                      <a href="{{ url_for('delete_specialization', sid = index.id) }}" class="btn btn-danger"
+                        onclick="return confirm('آیا برای حذف مطمئن هستید؟')">
+                        حذف
+                      </a>
+
+                    </td>
+
+
+                  </tr>
+
+                  {% endfor %}
+
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-6">
+
+          <div class="card collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title" style="margin-left: 50px;">تخصص جدید</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body" style="direction: rtl;text-align: right;">
+
+              <form action="{{ url_for('add_specialization') }}" method="post">
+
+                <div class="form-group">
+                  <label for="name">نام تخصص</label>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="نام تخصص" required>
+                </div>
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-primary" value="ایجاد تخصص" />
+                </div>
+
+              </form>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <div class="card collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title" style="margin-left: 50px;">حذف پزشک</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body" style="direction: rtl;text-align: right;">
+              <p>لطفا در مدیریت و حذف پزشک دقت کنید</p>
+
+              <table class="table table-hover text-nowrap table-head-fixed">
+                <thead>
+                  <tr>
+                    <th class="text-center">
+                      نام پزشک
+                    </th>
+                    <th class="text-center">
+                      حذف از برنامه
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% for index in doctors %}
+                  <tr>
+
+                    <td class="text-center">
+                      <p>
+                        {{ index.name }}
+                      </p>
+                    </td>
+
+                    <td class="text-center">
+                      <a href="{{ url_for('delete_doctors', sid = index.id) }}" class="btn btn-danger"
+                        onclick="return confirm('آیا برای حذف مطمئن هستید؟')">
+                        حذف
+                      </a>
+
+                    </td>
+
+
+                  </tr>
+
+                  {% endfor %}
+
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-6">
+
+          <div class="card collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title" style="margin-left: 50px;">افزودن پزشک</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body" style="direction: rtl;text-align: right;">
+
+              <form action="{{ url_for('add_doctors') }}" method="post">
+
+                <div class="form-group">
+                  <label for="name">نام پزشک</label>
+                  <input type="text" class="form-control" name="dr_name" id="dr_name" placeholder="نام پزشک" required>
+                </div>
+                <!-- <div class="form-group">
+                  <label for="description">توضیح</label>
+                  <input type="text" class="form-control" name="dr_description" id="dr_description" placeholder="توضیح"
+                    required>
+                </div> -->
+
+                <div class="form-group">
+                  <label for="specialization">انتخاب تخصص</label>
+                  <select name="specialization" class="form-control form-control-border" id="specialization"
+                    placeholder="انتخاب تخصص" value="{{ specialization | default('')}}" required>
+                    <option id="" value=""></option>
+                    {% for specialization in dr_specialization %}
+                    <option id="{{ specialization.id }}" value="{{ specialization.id }}">{{ specialization.name }}
+                    </option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-primary" value="ایجاد پزشک" />
+                </div>
+
+              </form>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+
+      </div>
+
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title" style="margin-left: 50px;">درج برنامه هفتگی پزشکان</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body" style="direction: rtl;text-align: right;">
+
+          <form action="{{ url_for('add_schedule') }}" method="post">
+
+            <div class="form-group">
+              <label for="weekday">روز هفته</label>
+              <select name="weekday" class="form-control form-control-border" id="weekday" placeholder="روز هفته"
+                value="{{ weekday | default('')}}" required>
+                <option id="" value="">انتخاب روز هفته</option>
+                <option id="1" value="شنبه">شنبه</option>
+                <option id="2" value="یکشنبه">یکشنبه</option>
+                <option id="3" value="دوشنبه">دوشنبه</option>
+                <option id="4" value="سه&zwnj;شنبه">سه&zwnj;شنبه</option>
+                <option id="5" value="چهارشنبه">چهارشنبه</option>
+                <option id="6" value="پنج&zwnj;شنبه">پنج&zwnj;شنبه</option>
+                <option id="0" value="جمعه">جمعه</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="shift">انتخاب نوبت</label>
+              <select name="shift" class="form-control form-control-border" id="shift" placeholder="انتخاب نوبت"
+                value="{{ shift | default('')}}" required>
+                <option id="" value="">انتخاب نوبت</option>
+                <option id="" value="صبح">صبح</option>
+                <option id="" value="عصر">عصر</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="doctor_name">انتخاب متخصص</label>
+              <select name="doctor_name" class="form-control form-control-border" id="doctor_name"
+                placeholder="انتخاب متخصص" value="{{ doctor_name | default('')}}" required>
+                <option id="" value=""></option>
+                {% for doctor in doctors %}
+                <option id="{{ doctor.id }}" value="{{ doctor.id }}">{{ doctor.name }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="card-footer">
+              <input type="submit" class="btn btn-primary" value="ساخت برنامه پزشک" />
+            </div>
+
+          </form>
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title" style="margin-left: 50px;">درج گروهی برنامه هفتگی پزشکان</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body" style="direction: rtl;text-align: right;">
+
+          <form action="{{ url_for('add_group_schedule') }}" method="post">
+
+            <div class="form-group">
+              <label for="weekday">روز هفته</label>
+              <select name="weekday" class="form-control form-control-border" id="weekday" placeholder="روز هفته"
+                value="{{ weekday | default('')}}" required>
+                <option id="" value="">انتخاب روز هفته</option>
+                <option id="1" value="شنبه">شنبه</option>
+                <option id="2" value="یکشنبه">یکشنبه</option>
+                <option id="3" value="دوشنبه">دوشنبه</option>
+                <option id="4" value="سه&zwnj;شنبه">سه&zwnj;شنبه</option>
+                <option id="5" value="چهارشنبه">چهارشنبه</option>
+                <option id="6" value="پنج&zwnj;شنبه">پنج&zwnj;شنبه</option>
+                <option id="0" value="جمعه">جمعه</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="shift">انتخاب نوبت</label>
+              <select name="shift" class="form-control form-control-border" id="shift" placeholder="انتخاب نوبت"
+                value="{{ shift | default('')}}" required>
+                <option id="" value="">انتخاب نوبت</option>
+                <option id="" value="صبح">صبح</option>
+                <option id="" value="عصر">عصر</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="doctor_name">انتخاب متخصص</label>
+              <br />
+                {% for doctor in doctors %}
+                
+                <input type="checkbox" name="check" id="doctor_name" value="{{ doctor.id }}">
+                <b>{{ doctor.name }}</b>
+              <br />
+                {% endfor %}
+            </div>
+
+            <div class="card-footer">
+              <input type="submit" class="btn btn-primary" value="ساخت برنامه پزشکان" />
+            </div>
+
+          </form>
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title" style="margin-left: 50px;">حذف برنامه هفتگی پزشکان</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-hover text-nowrap table-head-fixed">
+            <thead>
+              <tr>
+                <th class="text-center">
+                  نوبت
+                </th>
+                <th class="text-center">
+                  روز هفته
+                </th>
+                <th class="text-center">
+                  نام متخصص
+                </th>
+                <th class="text-center">
+                  حذف برنامه
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for index in schedule %}
+              <tr>
+
+                <td class="text-center">
+                  <a>
+                    {{ index.shift }}
+                  </a>
+                </td>
+
+                <td class="text-center">
+                  <a>
+                    {{ index.weekday }}
+                  </a>
+                </td>
+
+                <td style="text-align: center;">
+                  <a>
+                    {{ index.doctor_name }}
+                  </a>
+                  <br>
+                  <small>
+                    {{ index.doctor_specialization }}
+                  </small>
+                </td>
+
+
+                <td class="text-center">
+                  <a href="{{ url_for('delete_schedule', sid = index.id) }}" class="btn btn-danger"
+                    onclick="return confirm('آیا برای حذف برنامه مطمئن هستید؟')">
+                    حذف
+                  </a>
+
+                </td>
+
+
+              </tr>
+
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title" style="margin-left: 50px;">تکمیل جدول پخش برنامه</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body" style="direction: rtl;text-align: right;">
+
+          <form action="{{ url_for('add_phrases') }}" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <label for="phrases">یادداشت</label>
+              <input type="text" class="form-control" name="phrases" id="phrases" placeholder="یادداشت">
+            </div>
+
+            <div class="form-group">
+              <label for="phrases">انتخاب تصویر</label>
+              <input type="file" name="file" id="file" class="form-control" />
+            </div>
+
+            <div class="card-footer">
+              <input type="submit" class="btn btn-primary" value="درج" />
+            </div>
+
+          </form>
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <h3 class="card-title" style="margin-left: 50px;">حذف از جدول پخش برنامه</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-hover text-nowrap table-head-fixed">
+            <thead>
+              <tr>
+                <th class="text-center">
+                  یادداشت
+                </th>
+                <th class="text-center">
+                  تصویر
+                </th>
+                <th class="text-center">
+                  حذف از برنامه
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for index in phrases %}
+              <tr>
+
+                <td class="text-center">
+                  <p>
+                    {{ index.phrpse }}
+                  </p>
+                </td>
+
+                <td>
+                  <img class="table-avatar" src="../static/uploads/{{ index.file_address }}"
+                    style="width: 120px;float: right;">
+                </td>
+
+                <td class="text-center">
+                  <a href="{{ url_for('delete_phrase', sid = index.id) }}" class="btn btn-danger"
+                    onclick="return confirm('آیا برای حذف مطمئن هستید؟')">
+                    حذف
+                  </a>
+
+                </td>
+
+
+              </tr>
+
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+      <div class="col-md-6">
+
+        <div class="card collapsed-card">
+          <div class="card-header">
+            <h3 class="card-title" style="margin-left: 50px;">زمان بندی جدول پخش برنامه</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body" style="direction: rtl;text-align: right;">
+
+            <form action="{{ url_for('update_ModernSlider') }}" method="post">
+
+              <div class="form-group">
+                <label for="autoplaySpeed">مدت زمان نمایش</label>
+                <input type="number" class="form-control" name="autoplaySpeed" id="autoplaySpeed"
+                  placeholder="بر حسب میلی ثانیه" required>
+              </div>
+              <div class="form-group">
+                <label for="speed">مدت زمان جابجایی هر اسلاید</label>
+                <input type="number" class="form-control" name="speed" id="speed" placeholder="بر حسب میلی ثانیه"
+                  required>
+              </div>
+
+              <div class="card-footer">
+                <input type="submit" class="btn btn-primary" value="بروز رسانی زمان" />
+              </div>
+
+            </form>
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <!-- /.col -->
+
+
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<!-- 
+<script>
+  $(function () {
+    //Timepicker
+    $('#start_hour').datetimepicker({
+      format: 'LT'
+    });
+    $('#end_hour').datetimepicker({
+      format: 'LT'
+    });
+  });
+</script> -->
+{% endblock %}

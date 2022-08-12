@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>برنامه پزشکان کلینیک تخصصی و فوق تخصصی الزهرا(س) | {{ title }}</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="../static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../static/dist/css/adminlte.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../static/plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../static/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="../static/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../static/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../static/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../static/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="../static/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="../static/plugins/bs-stepper/css/bs-stepper.min.css">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="../static/plugins/dropzone/min/dropzone.min.css">
+  <!-- page specific head -->
+  {% block head %}{% endblock %}
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md">
+      <div class="container">
+
+        <a href="{{ url_for('index') }}" class="navbar-brand">
+          <img src="../static/uploads/logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <span class="brand-text font-weight-light">کلینیک الزهرا(س)</span>
+        </a>
+
+        <!-- Right navbar links -->
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+
+          {% if session.logged_in %}
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{{ url_for('logout') }}" title="خروج">
+              <i class="fa fa-window-close" style="color: #869099;"></i>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('broadcast') }}" title="جدول پخش" target="_blank">
+              <i class='fas fa-desktop' style="color: #869099;"></i>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('player') }}" title="پخش موسیقی" target="_blank">
+              <i class='fa fa-play' style="color: #869099;"></i>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('schedule') }}" title="برنامه روزانه">
+              <i class="fas fa-calendar-alt" style="color: #869099;"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{{ url_for('dashboard') }}" title="مدیریت نرم افزار">
+              <i class="fa fa-cogs" style="color: #869099;"></i>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button" title="تمام صفحه">
+              <i class="fas fa-expand-arrows-alt" style="color: #869099;"></i>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"
+              title="شخصی سازی صفحه">
+              <i class="fas fa-th-large" style="color: #869099;"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    {% block content %}{% endblock %}
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+      <!-- To the right -->
+      <div class="float-right d-none d-sm-inline">
+        <strong><a href="{{ url_for('ChangeLog') }}">برنامه پزشکان</a> کلینیک تخصصی و فوق تخصصی الزهرا(س)
+          </a></strong>&copy;
+      </div>
+      <!-- Default to the left -->
+
+      <div id="time"></div>
+
+    </footer>
+
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- REQUIRED SCRIPTS -->
+
+  <!-- jQuery -->
+  <script src="../static/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Toastr -->
+  <script src="../static/dist/js/sweetalert.js"></script>
+  <!-- InputMask -->
+  <script src="../static/plugins/moment/moment.min.js"></script>
+  <script src="../static/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- Select2 -->
+  <script src="../static/plugins/select2/js/select2.full.min.js"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="../static/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="../static/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="../static/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="../static/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="../static/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- BS-Stepper -->
+  <script src="../static/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+  <!-- dropzonejs -->
+  <script src="../static/plugins/dropzone/min/dropzone.min.js"></script>
+
+  <!-- date-range-picker -->
+  <script src="../static/plugins/daterangepicker/daterangepicker.js"></script>
+
+  <!-- AdminLTE App -->
+  <script src="../static/dist/js/adminlte.min.js"></script>
+  <!-- demo purposes -->
+  <script src="../static/dist/js/demo.js"></script>
+
+  <!-- page specific script -->
+
+  <script>
+    $(function () {
+
+      //<!-- flashed messages -->
+      //{% for message in get_flashed_messages() %}
+
+      var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      $(document).Toasts('create', {
+        title: 'پیام سیستم',
+        autohide: true,
+        delay: 4500,
+        body: '{{ message }}'
+      });
+      //{% endfor %}
+      //<!-- flashed messages -->
+
+    });
+
+  </script>
+
+  {% block scripts %}{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title" style="margin-left: 50px;">برنامه متخصصین</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body table-responsive p-0" style="height: 450px;">
+        <table class="table table-hover text-nowrap table-head-fixed">
+          <thead>
+            <tr>
+              <th class="text-center">
+                نوبت
+              </th>
+              <th class="text-center">
+                روز هفته
+              </th>
+              <th class="text-center">
+                نام متخصص
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {% for index in schedule %}
+            <tr>
+
+              <td class="text-center">
+                <a>
+                  {{ index.shift }}
+                </a>
+              </td>
+
+              <td class="text-center">
+                <a>
+                  {{ index.weekday }}
+                </a>
+              </td>
+
+              <td style="text-align: center;">
+                <a>
+                  {{ index.doctor_name }}
+                </a>
+                <br>
+                <small>
+                  {{ index.doctor_specialization }}
+                </small>
+              </td>
+
+            </tr>
+
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
