@@ -1,13 +1,4 @@
-click
 pandas
-colorama
 Flask
-importlib-metadata
-itsdangerous
 Jinja2
-MarkupSafe
-pip
-setuptools
-typing-extensions
 Werkzeug
-zipp
