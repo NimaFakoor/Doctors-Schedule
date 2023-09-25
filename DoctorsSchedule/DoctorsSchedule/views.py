@@ -362,6 +362,19 @@ def delete_schedule(sid):
         flash(result)
     return redirect(url_for("dashboard"))
 
+@app.route("/delete/group-schedule", methods=["POST"])
+def delete_group_schedule():
+    """delete group schedule from the database."""
+    if not session.get("logged_in"):
+        abort(401)
+
+    Schedule.query.delete()
+    db.session.commit()
+    error = "لیست برنامه هفته حذف شد"
+    flash(error)
+
+    return redirect(url_for("dashboard"))
+
 @app.route("/update/ModernSlider", methods=["POST"])
 def update_ModernSlider():
     """Update ModernSlider"""

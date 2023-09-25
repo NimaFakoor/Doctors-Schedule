@@ -607,6 +607,36 @@
         </div>
         <!-- /.card -->
 
+        <div class="card collapsed-card">
+          <div class="card-header">
+            <h3 class="card-title" style="margin-left: 50px;">حذف کل برنامه پزشکان</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body" style="direction: rtl;text-align: right;">
+
+            <form action="{{ url_for('delete_group_schedule') }}" method="post">
+
+              <div class="card-footer">
+                <input type="submit" class="btn btn-danger" onclick="return confirm('آیا برای حذف مطمئن هستید؟')" value="حذف کل برنامه پزشکان" />
+              </div>
+
+            </form>
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
       </div>
       <!-- /.col -->
 

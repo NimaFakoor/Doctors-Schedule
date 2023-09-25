@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="3600">
+
   <title>برنامه پزشکان کلینیک تخصصی و فوق تخصصی الزهرا(س)</title>
 
   <link rel="stylesheet" href="../static/dist/slider/normalize.min.css">
@@ -14,11 +16,9 @@
 
 <body>
 
-  <h1 style="font-size: 20px;position: absolute;color: white;z-index: 100;right: 3%;text-align: right;">
-    <a style="text-decoration: none;color: springgreen;" href="{{ url_for('index') }}" target="_blank">برنامه پزشکان</a>
-    کلینیک تخصصی و فوق تخصصی الزهرا(س)
-    </a>
-  </h1>
+  <h1 style="font-size: 20px;position: absolute;color: white;z-index: 100;right: 3%;text-align: right;"> 
+    کلینیک ویژه تخصصی و فوق تخصصی الزهرا (س)
+ </h1>
 
 <img src="../static/uploads/logo.png" style="opacity: .8;position: absolute;align-items: center;left: 25%;">
 
@@ -136,7 +136,7 @@
       <div class="img-fill">
         <img src="../static/uploads/{{ index.file_address }}" alt="" style="width: 30%;">
         <div class="info">
-          <div>
+          <div style=" margin-top: -80px; font-size: 25px; ">
             <h3>{{ index.phrase }}</h5>
           </div>
         </div>
