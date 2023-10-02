@@ -334,13 +334,9 @@ def add_group_schedule():
     weekday=request.form["weekday"]
     shift=request.form["shift"]
     doctor_list = request.form.getlist('check')  # getting client list
-    print(doctor_list)
     for i in doctor_list:
-        print(i)
         drs = Doctors.query.filter(Doctors.id == i).first()
-        print(drs)
         sdr = Specialization.query.filter(Specialization.id == drs.specialization_id).first()
-        print(sdr)
         schedule_entry = Schedule(weekday=weekday, shift=shift, doctor_name=drs.name, doctor_specialization=sdr.name)
         db.session.add(schedule_entry)
         db.session.commit()
