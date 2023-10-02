@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Responsive and sortable tables</title>
+  <title>Responsive and Sortable Tables</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:300,400,400i,700" rel="stylesheet">
+<script src="https://use.fontawesome.com/47886b77a3.js"></script><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1>Responsive & Sortable table solutions</h1>
+<h2>Simple table - responsive (overflow-y)</h2>
+
+<div class="table-responsive">
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Composer</th>
+				<th>Lyrics</th>
+				<th>Info</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1ος Παγκόσμιος</td>
+				<td>Λοΐζος, Μ.</td>
+				<td>Νεγρεπόντης, Μ.</td>
+				<td>28 Οκτ., 17 Νοε.</td>
+			</tr>
+			<tr>
+				<td>2ος Παγκόσμιος</td>
+				<td>Λοΐζος, Μ.</td>
+				<td>Νεγρεπόντης, Μ.</td>
+				<td>28 Οκτ., 17 Νοε.</td>
+			</tr>
+			<tr>
+				<td>3ος Παγκόσμιος</td>
+				<td>Λοΐζος, Μ.</td>
+				<td>Νεγρεπόντης, Μ.</td>
+				<td>28 Οκτ., 17 Νοε.</td>
+			</tr>
+			<tr>
+				<td>4ος Παγκόσμιος</td>
+				<td>Λοΐζος, Μ.</td>
+				<td>Νεγρεπόντης, Μ.</td>
+				<td>28 Οκτ., 17 Νοε.</td>
+			</tr>
+			<tr>
+				<td>5ος Παγκόσμιος</td>
+				<td>Λοΐζος, Μ.</td>
+				<td>Νεγρεπόντης, Μ.</td>
+				<td>28 Οκτ., 17 Νοε.</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<h2>Table - responsive (data-label) full</h2>
+<table class="table-responsive-full">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Hero Title</th>
+		    <th>Name</th>
+        <th>Last</th>
+        <th>Hero</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="First Name">Bruce</td>
+        <td data-label="Last Name">Wayne</td>
+        <td data-label="Hero Title">Batman</td>
+		    <td data-label="Name">Bruce</td>
+        <td data-label="Last">Wayne</td>
+        <td data-label="Hero">Batman</td>
+      </tr>
+      <tr>
+        <td data-label="First Name">Peter</td>
+        <td data-label="Last Name">Parker</td>
+        <td data-label="Hero Title">Spiderman</td>
+		    <td data-label="Name">Bruce</td>
+        <td data-label="Last">Wayne</td>
+        <td data-label="Hero">Batman</td>
+      </tr>
+      <tr>
+        <td data-label="First Name">Bruce</td>
+        <td data-label="Last Name">Banner</td>
+        <td data-label="Hero Title">The Hulk</td>
+		    <td data-label="Name">Bruce</td>
+        <td data-label="Last">Wayne</td>
+        <td data-label="Hero">Batman</td>
+      </tr>
+      <tr>
+        <td data-label="First Name">Clark</td>
+        <td data-label="Last Name">Kent</td>
+        <td data-label="Hero Title">Superman</td>
+		    <td data-label="Name">Bruce</td>
+        <td data-label="Last">Wayne</td>
+        <td data-label="Hero">Batman</td>
+      </tr>
+    </tbody>
+</table>
+<p>Basic on pen by <a href="https://codepen.io/joshnh/pen/vOxxQX" target="_blank">Joshua Hibbert</a></p>
+<p> </p>
+<hr>
+<h2>Table - responsive (data-label) full & Sortable</h2>
+<table id="content-table3" class="table-responsive-full sort-table">
+	<thead>
+		<tr>
+			<th class="title">Title
+				<div class="sort-table-arrows">
+					<a href="javascript:sort(true, 'title', 'content-table3');"><button class="button" title="Αύξουσα ταξινόμηση"><i class="fa fa-chevron-down"></i></button></a>
+					<a href="javascript:sort(false, 'title', 'content-table3');"><button class="button" title="Φθίνουσα ταξινόμηση"><i class="fa fa-chevron-up"></i></button></a>
+				</div>
+			</th>
+			<th class="composer">Composer
+				<div class="sort-table-arrows">
+					<a href="javascript:sort(true, 'composer', 'content-table3');"><button class="button" title="Αύξουσα ταξινόμηση"><i class="fa fa-chevron-down"></i></button></a>
+					<a href="javascript:sort(false, 'composer', 'content-table3');"><button class="button" title="Φθίνουσα ταξινόμηση"><i class="fa fa-chevron-up"></i></button></a>
+				</div>
+			</th>
+			<th class="lyrics">Lyrics
+				<div class="sort-table-arrows">
+					<a href="javascript:sort(true, 'lyrics', 'content-table3');"><button class="button" title="Αύξουσα ταξινόμηση"><i class="fa fa-chevron-down"></i></button></a>
+					<a href="javascript:sort(false, 'lyrics', 'content-table3');"><button class="button" title="Φθίνουσα ταξινόμηση"><i class="fa fa-chevron-up"></i></button></a>
+				</div>
+			</th>
+			<th class="set">Set
+				<div class="sort-table-arrows">
+					<a href="javascript:sort(true, 'set', 'content-table3');"><button class="button" title="Αύξουσα ταξινόμηση"><i class="fa fa-chevron-down"></i></button></a>
+					<a href="javascript:sort(false, 'set', 'content-table3');"><button class="button" title="Φθίνουσα ταξινόμηση"><i class="fa fa-chevron-up"></i></button></a>
+				</div>
+			</th>
+			<th class="arranger">Arranger / Editing</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-label="Title" class="title" class="title">Come in and stay a while</td>
+			<td data-label="Composer" class="composer">Polay, Rhonda</td>
+			<td data-label="Lyrics" class="lyrics">Polay, Rhonda</td>
+			<td data-label="Set" class="set">SSAATTB a-cappella</td>
+			<td data-label="Arranger">Sarandakos, S. &amp; Legakis, M. / Legakis, M. (Ed.)</td>
+		</tr>
+		<tr>
+			<td data-label="Title" class="title">Eleanor Rigby</td>
+			<td data-label="Composer" class="composer">Lennon, J. | McCartney, P.</td>
+			<td data-label="Lyrics" class="lyrics">Lennon, J. | McCartney, P.</td>
+			<td data-label="Set" class="set"><span>SSATTBB a-cappella</span></td>
+			<td data-label="Arranger">Hare, N. &amp; Legakis, M., / Legakis, M. (Ed.)</td>
+		</tr>
+		<tr>
+			<td data-label="Title" class="title">In memoriam<br><small>(from "Les Choristes")</small></td>
+			<td data-label="Composer" class="composer">Coulais, B.</td>
+			<td data-label="Lyrics" class="lyrics">Barratier, C.</td>
+			<td data-label="Set" class="set"><span>SSAATTBB, Pno.</span></td>
+			<td data-label="Arranger">Legakis, M.</td>
+		</tr>
+		<tr>
+			<td data-label="Title" class="title">Lover Man</td>
+			<td data-label="Composer" class="composer">Davies, J. | Ramirez, R. | Sherman, J.</td>
+			<td data-label="Lyrics" class="lyrics">Davies, J. | Ramirez, R. | Sherman, J.</td>
+			<td data-label="Set" class="set"><span>SATB, Pno.</span></td>
+			<td data-label="Arranger">Legakis, M.</td>
+		</tr>
+		<tr>
+			<td data-label="Title" class="title">Lueur d'été<br><small>(from "Les Choristes")</small></td>
+			<td data-label="Composer" class="composer">Coulais, B. </td>
+			<td data-label="Lyrics" class="lyrics">Barratier, C.</td>
+			<td data-label="Set" class="set"><span>SSAATTBB, Pno.</span></td>
+			<td data-label="Arranger">Legakis, M.</td>
+		</tr>
+		<tr>
+			<td data-label="Title" class="title">Stairway to Paradise<br><small>(from "George White's Scandals of 1922")</small></td>
+			<td data-label="Composer" class="composer">Gershwin, G. | Francis, A. | De Sylva B.G.</td>
+			<td data-label="Lyrics" class="lyrics">Gershwin, I.</td>
+			<td data-label="Set" class="set"><span>SATTBB, Pno.</span></td>
+			<td data-label="Arranger">Legakis, M.</td>
+		</tr>
+		<tr>
+			<td data-label="Title" class="title">Who will buy?<br><small>(from "Oliver")</small></td>
+			<td data-label="Composer" class="composer">Burt, Lionel</td>
+			<td data-label="Lyrics" class="lyrics">Burt, Lionel</td>
+			<td data-label="Set" class="set"><span>SSAATTBB, Pno.</span></td>
+			<td data-label="Arranger">Legakis, M.</td>
+		</tr>
+	</tbody>
+</table>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

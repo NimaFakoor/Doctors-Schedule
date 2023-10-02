@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="time"></div>
+    <div id="time2"></div>
+
+</body>
+<script src="persian-date.js"></script>
+<script src="test.js"></script>
+<script>
+function getDate() {
+
+    var pDate = new persianDate();
+
+    var weekday = pDate.toLocale("fa").format("dddd");
+    var month = pDate.toLocale("fa").format("MMMM");
+    var day = pDate.toLocale("fa").format("DD");
+    var year = pDate.toLocale("fa").format("YYYY");
+
+    var showTime = pDate.toLocale('fa').format() ;
+    
+    document.getElementById('time').innerHTML = showTime;
+    document.getElementById('time2').innerHTML = weekday+month+day+year;
+    
+    requestAnimationFrame(getDate);
+
+}
+getDate();
+
+</script>
+</html>

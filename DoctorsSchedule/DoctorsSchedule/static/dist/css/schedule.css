@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css?family=News+Cycle");
+:root {
+  --font: "News Cycle", Helvetica, sans-serif;
+  --accent: #9ccf5e;
+  --bg: #403638;
+  --transform: translate(-50%, -50%);
+}
+
+aside {
+  position: relative;
+  flex: 1;
+  order: 1;
+}
+
+main {
+  position: relative;
+  flex: 1;
+  order: 2;
+  overflow: auto;
+  height: 100vh;
+}
+main section {
+  display: flex;
+  min-height: 100vh;
+}
+
+svg.logo {
+  position: absolute;
+  pointer-event: none;
+  font-size: 100vmax;
+  width: 1em;
+  height: 1em;
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+  transform: var(--transform);
+  transition: transform 12000ms ease-in-out;
+  mix-blend-mode: overlay;
+}
+svg.logo path {
+  fill: var(--accent);
+  transition: fill 3000ms linear;
+}
+
+main {
+  background: rgba(0, 0, 17, 0.8);
+  color: #fff;
+}
+main header {
+  flex: 0 0 auto;
+  -ms-writing-mode: tb-rl;
+      writing-mode: vertical-rl;
+  padding: 1em 0.5em;
+  color: rgba(0, 0, 17, 0.4);
+  background: #fff;
+}
+main ul {
+  list-style: none;
+  margin: 0;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main li {
+  position: relative;
+  transition: font-size 300ms ease-in, opacity 300ms ease-in;
+  font-size: 0.5em;
+  opacity: 0.2;
+  line-height: 1.2;
+}
+main li.current {
+  font-size: 1em;
+  opacity: 1;
+}
+main li.current::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  transform: translateY(-0.5rem);
+  border: 0.5em solid;
+  border-width: 1em 0 1em 0.625em;
+  border-color: transparent;
+  border-left-color: currentColor;
+}
+main li.current ~ li {
+  opacity: 0.4;
+}
+main li.current + li {
+  font-size: 0.675em;
+  opacity: 0.7;
+}
+
+h1 {
+  position: relative;
+  top: 0.65em;
+  left: 0.65em;
+  margin: 0;
+  line-height: 1;
+  display: inline;
+}
+
+h3 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 1.325em;
+}
+h3 b {
+  font-weight: 900;
+}
+
+.clock {
+  position: absolute;
+  font-size: 1em;
+  top: 1em;
+  right: 1em;
+  transform: translate(0, calc(-1.3em + var(--y)));
+  transition: transform 300ms ease-out;
+}
+
+small {
+  font-size: 0.75em;
+  color: var(--accent);
+  transition: color 3000ms linear;
+}
+small small {
+  font-size: 0.85em;
+}
+
+main li.after-hours {
+  -webkit-animation: fade-in 1000ms ease-in 80ms forwards;
+          animation: fade-in 1000ms ease-in 80ms forwards;
+  position: fixed;
+  font-size: 1.2em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  line-height: 1.5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  opacity: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+main li.current ~ li.after-hours {
+  display: none;
+  opacity: 0;
+}
+
+@-webkit-keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+.control {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  font-size: 0.5em;
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(calc(100% - 2em));
+  transition: transform 300ms ease-out;
+}
+.control header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.control header div {
+  padding-left: 1em;
+}
+.control > div {
+  padding: 1em;
+}
+.control p {
+  margin: 0;
+}
+.control p + p {
+  margin-top: 1em;
+}
+.control input[type=range] {
+  padding: 0;
+  border: 0;
+  width: 15em;
+  vertical-align: middle;
+  border-radius: 1em;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  line-height: 1;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  transition: all 0.3s;
+  outline-offset: 0;
+  margin: 0;
+}
+.control input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 1em;
+  height: 1em;
+  border: none;
+  border-radius: 1em;
+  background: #E2E4E6;
+  background-image: none;
+  transform: scale(2);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.control button {
+  font: inherit;
+  border: none;
+  color: inherit;
+  width: 2em;
+  height: 2em;
+  font-size: 1em;
+  font-weight: 100;
+  background: rgba(255, 255, 255, 0.4);
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+.control.show {
+  transform: translateY(0%);
+}
+.control.show button {
+  transform: rotate(0deg);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  overflow: hidden;
+  font-family: var(--font);
+  font-size: calc(1em + 1.5vmin);
+  transition: background 1500ms linear;
+  color: #fff;
+}
+
+main header {
+  height: 100%;
+}
+
+main header {
+  width: 0px;
+  padding: 1em 1.25em;
+  line-height: 0;
+}
